@@ -1,5 +1,7 @@
 # Advanced Task Manager 
-* A simple java web application using `Spring Boot` framework with the features 
+* A simple java web application using `Spring Boot` framework.
+
+## Features
 
 + Beautiful Bootstrap 5.3.6 UI
 + User authentication (signup/login)
