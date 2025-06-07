@@ -1,0 +1,97 @@
+/* Main Styles */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+}
+
+/* Card Animations */
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Todo List Styles */
+.list-group-item {
+    transition: background-color 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-outline-secondary.rounded-circle {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+/* Priority Colors */
+.badge.bg-danger {
+    font-weight: 500;
+}
+
+.badge.bg-warning {
+    font-weight: 500;
+}
+
+.badge.bg-info {
+    font-weight: 500;
+}
+
+/* Task Completion Animation */
+.text-decoration-line-through {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Navbar Styles */
+.navbar-brand {
+    font-weight: 600;
+}
+
+/* Form Styles */
+.form-control:focus, .form-select:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Button Styles */
+.btn {
+    transition: all 0.2s ease;
+}
+
+/* Custom Spacing */
+.mb-4 {
+    margin-bottom: 2rem !important;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+/* Responsive Text */
+@media (max-width: 576px) {
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    .lead {
+        font-size: 1rem;
+    }
+}

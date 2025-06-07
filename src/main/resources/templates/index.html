@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home-TaskMaster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4">
+        <div class="container">
+        
+            <a class="navbar-brand" href="/">
+                <i class="bi bi-check2-circle me-2"></i>
+                TaskMaster
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/signup}">Sign Up</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="text-center mb-5">
+                    <h1 class="display-4 fw-bold text-primary mb-3">Organize Your Tasks Effortlessly</h1>
+                    <p class="lead mb-4">TaskMaster helps you manage your tasks, stay organized, and boost productivity.</p>
+                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
+                        <a th:href="@{/signup}" class="btn btn-primary btn-lg px-4 gap-3">Sign Up</a>
+                        <a th:href="@{/login}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+                        <button id="try-now-btn" class="btn btn-success btn-lg px-4">Just Start</button>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="bi bi-list-check text-primary fs-1 mb-3"></i>
+                                <h5 class="card-title">Create Tasks</h5>
+                                <p class="card-text">Quickly add tasks and organize them by priority.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="bi bi-calendar-check text-primary fs-1 mb-3"></i>
+                                <h5 class="card-title">Track Progress</h5>
+                                <p class="card-text">Monitor completion status and stay on top of deadlines.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card h-100 shadow-sm">
+                            <div class="card-body text-center">
+                                <i class="bi bi-cloud-arrow-up text-primary fs-1 mb-3"></i>
+                                <h5 class="card-title">Sync Everywhere</h5>
+                                <p class="card-text">Access your tasks from anywhere when you sign up.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="app-container" class="container mb-5 d-none">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0">Try TaskMaster</h3>
+                        <p class="mb-0 small">Your tasks will be stored locally and cleared when you close the browser</p>
+                    </div>
+                    <div class="card-body">
+                        <form id="todo-form" class="mb-4">
+                            <div class="input-group">
+                                <input type="text" id="todo-input" class="form-control" placeholder="Add a new task..." required>
+                                <select id="priority-select" class="form-select" style="max-width: 130px;">
+                                    <option value="LOW">Low Priority</option>
+                                    <option value="MEDIUM" selected>Medium Priority</option>
+                                    <option value="HIGH">High Priority</option>
+                                </select>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-plus-lg"></i> Add
+                                </button>
+                            </div>
+                        </form>
+
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="btn-group">
+                                <button id="filter-all" class="btn btn-outline-primary active">All</button>
+                                <button id="filter-active" class="btn btn-outline-primary">Active</button>
+                                <button id="filter-completed" class="btn btn-outline-primary">Completed</button>
+                            </div>
+                            <button id="clear-completed" class="btn btn-outline-danger btn-sm">
+                                Clear Completed
+                            </button>
+                        </div>
+
+                        <ul id="todo-list" class="list-group">
+                            <!-- Todo items will be added here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container text-center">
+            <span class="text-muted">© <span id="current-year">2025</span> TaskMaster. All rights reserved.</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/app.js}"></script>
+    <script>
+        // Set current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        
+        // "Just Start" functionality for non-logged in users
+        document.getElementById('try-now-btn').addEventListener('click', function() {
+            document.getElementById('app-container').classList.remove('d-none');
+            window.scrollTo({
+                top: document.getElementById('app-container').offsetTop - 20,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
